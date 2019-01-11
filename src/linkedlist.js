@@ -39,7 +39,10 @@ class LinkedList {
     return pointer.data === data ? indexAcc : false;
   }
 
-  // insertAt()
+  insertAt(index, data) {
+
+  }
+
   // removeAt()
 }
 
