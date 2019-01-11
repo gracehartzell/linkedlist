@@ -1,5 +1,13 @@
 const Node = require("./node");
 
+// class Node {
+//     constructor(data = null, prev = null, next = null) {
+//         this.data = data;
+//         this.prev = prev;
+//         this.next = next;
+//     }
+// }
+
 class LinkedList {
   constructor() {
     this.length = 0;
@@ -39,11 +47,41 @@ class LinkedList {
     return pointer.data === data ? indexAcc : false;
   }
 
-  insertAt(index, data) {
+  //   insertAt(index, data) {
+  //     let currentNode = this.head;
+  //     let nextNode = currentNode.next;
+  //     let addedNode = new Node();
+  //     let position = 0;
+  //     // protection clause:
+  //     if (index > this.length || index < 0) return false;
+  //     // insert to front if index = 0
+  //     if (index === 0) return this.insertFirst(data);
+  //     while (position < index) {
+  //       currentNode = nextNode;
+  //       position += 1;
+  //     }
+  //     currentNode.prev.next = addedNode;
+  //     addedNode.prev = currentNode.prev;
+  //     currentNode.prev = nextNode;
+  //     nextNode.next = currentNode;
+  //     this.length++;
+  //   }
 
-  }
+  //   insertFirst(data) {
+  //     let newNode = new Node(data);
+  //     this.head.prev = newNode;
+  //     this.head = newNode;
+  //     this.length++;
+  //   }
 
   // removeAt()
 }
+
+let testList = new LinkedList();
+testList.add(666);
+testList.add(420);
+// testList.add('c');
+console.log(testList.indexOf(666));
+// console.log(testList);
 
 module.exports = LinkedList;
