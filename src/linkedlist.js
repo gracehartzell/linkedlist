@@ -39,35 +39,59 @@ class LinkedList {
     return pointer.data === data ? indexAcc : false;
   }
 
-    insertAt(index, data) {
-      let currentNode = this.head;
-      let nextNode = currentNode.next;
-      let addedNode = new Node(data);
-      let position = 0;
-      // protection clause:
-      if (index > this.length || index < 0) return false;
-      // insert to front if index = 0
-      if (index === 0) return this.insertFirst(data);
-      while (position < index) {
-        currentNode = nextNode;
-        position += 1;
+  insertAt(index, data) {
+    let currentNode = this.head;
+    let nextNode = currentNode.next;
+    let addedNode = new Node(data);
+    let position = 0;
+    // protection clause:
+    if (index > this.length || index < 0) return false;
+    // insert to front if index = 0
+    if (index === 0) return this.insertFirst(data);
+    while (position < index) {
+      currentNode = nextNode;
+      position += 1;
+    }
+    currentNode.prev.next = addedNode;
+    addedNode.prev = currentNode.prev;
+    currentNode.prev = nextNode;
+    nextNode.next = currentNode;
+    this.length++;
+  }
+
+  insertFirst(data) {
+    let newNode = new Node(data);
+    this.head.prev = newNode;
+    this.head = newNode;
+    this.length++;
+  }
+
+  removeAt(index) {
+    let curr = this.findNodeAtIndex(index);
+    if (curr) {
+      if (curr.prev === null) {
+        this.head = curr.next;
+      } else {
+        curr.prev.next = curr.next;
       }
-      currentNode.prev.next = addedNode;
-      addedNode.prev = currentNode.prev;
-      currentNode.prev = nextNode;
-      nextNode.next = currentNode;
-      this.length++;
+      this.length--;
     }
+  }
 
-    insertFirst(data) {
-      let newNode = new Node(data);
-      this.head.prev = newNode;
-      this.head = newNode;
-      this.length++;
+  findNodeAtIndex(index) {
+    if (index > this.length) return false;
+    
+    let pointer = this.head;
+    let previous;
+    let indexAcc = 0;
+    while (indexAcc < index) {
+      previous = pointer;
+      pointer = pointer.next;
+      indexAcc++;
     }
+    return pointer;
+  }
 
-  // removeAt()
 }
-
 
 module.exports = LinkedList;
