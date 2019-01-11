@@ -24,9 +24,21 @@ class LinkedList {
     this.length++;
   }
 
-  // get()
-  indexOf()
-  
+  indexOf(data) {
+    let indexAcc = 0;
+    // assign starting place:
+    let pointer = this.head;
+    // while pointer and subsequent aren't what you're looking for:
+    while (pointer.next && pointer.data !== data) {
+      // start traversing list:
+      pointer = pointer.next;
+      // increase indexing count respectively
+      indexAcc++;
+    }
+    // return the index # if found correct one; otherwise keep going:
+    return pointer.data === data ? indexAcc : false;
+  }
+
   // insertAt()
   // removeAt()
 }

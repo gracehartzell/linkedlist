@@ -32,8 +32,8 @@ const LinkedList = require('../src/linkedlist')
             list.add(420);
 
             expect(list.length).to.equal(2);
-            expect(list.indexOf(0)).to.equal(666);
-            expect(list.indexOf(1)).to.equal(420);
+            expect(list.indexOf(666)).to.equal(0);
+            expect(list.indexOf(420)).to.equal(1);
         });
 
     })
